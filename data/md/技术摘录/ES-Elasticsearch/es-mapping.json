@@ -1,0 +1,154 @@
+{
+  "settings": {
+    "index.number_of_shards": 3,
+    "index.max_result_window": 20000000,
+    "number_of_replicas": 1,
+    "index.refresh_interval": "60s",
+    "index.highlight.max_analyzed_offset": "10000",
+    "analysis": {
+      "analyzer": {
+        "my_analyzer": {
+          "tokenizer": "ik_max_word",
+          "char_filter": [
+            "camel_case_filter",
+            "special_character_filter"
+          ]
+        }
+      },
+      "char_filter": {
+        "camel_case_filter": {
+          "type": "pattern_replace",
+          "pattern": "(?<=\\p{Lower})(?=\\p{Upper})",
+          "replacement": " "
+        },
+        "special_character_filter": {
+            "type": "pattern_replace",
+            "pattern": "(?:\\p{Punct})",
+            "replacement" : " "
+        }
+      }
+    }
+  },
+  "mappings": {
+    "record": {
+      "_all" : { "enabled" : false },
+      "dynamic": true,
+      "date_detection": true,
+      "properties": {
+        "id": {
+          "type": "keyword",
+          "index": true
+        },
+        "verify_result": {
+          "type" : "boolean",
+          "index" : true
+        },
+        "verify_client_name": {
+          "type": "text",
+          "index": true,
+          "analyzer": "ik_max_word",
+          "search_analyzer" : "ik_smart",
+          "fields": {
+            "exact": {
+              "type": "keyword"
+            }
+          },
+          "fielddata": true
+        },
+        "verify_type": {
+          "type" : "keyword",
+          "index": true
+        },
+        "verify_client_id": {
+          "type": "keyword",
+          "index": true
+        },
+        "appid": {
+          "type": "keyword",
+          "index": true
+        },
+        "appname": {
+          "type": "text",
+          "index": true,
+          "analyzer": "ik_max_word",
+          "search_analyzer" : "ik_smart",
+          "fields": {
+            "exact": {
+              "type": "keyword"
+            }
+          },
+          "fielddata": true
+        },
+        "groupname": {
+          "type": "text",
+          "index": "true",
+          "analyzer": "ik_max_word",
+          "search_analyzer" : "ik_smart",
+          "fields": {
+            "exact": {
+              "type": "keyword"
+            }
+          },
+          "fielddata": true
+        },
+        "clientname": {
+          "type": "text",
+          "index": "true",
+          "fields": {
+            "exact": {
+              "type": "keyword"
+            }
+          },
+          "fielddata": true
+        },
+        "modeltype": {
+          "type": "text",
+          "index": true,
+          "fields": {
+            "exact": {
+              "type": "keyword"
+            }
+          },
+          "fielddata": true
+        },
+        "createtime": {
+          "type": "date",
+          "index": true,
+          "format": "strict_date_optional_time||yyyy-MM-dd HH:mm:ss||yyyy-MM-dd||epoch_millis"
+        },
+        "devuid": {
+          "type": "text",
+          "index": true,
+          "analyzer": "ik_max_word",
+          "search_analyzer" : "ik_smart",
+          "fields": {
+            "exact": {
+              "type": "keyword"
+            }
+          },
+          "fielddata": true
+        },
+        "threshold": {
+          "type" : "double",
+          "index": true
+        },
+        "value" : {
+          "type" : "double",
+          "index": true
+        },
+        "asv": {
+            "type" : "boolean",
+            "index": true
+        },
+        "asv_threshold": {
+            "type" : "double",
+            "index" : true
+        },
+        "asv_score" : {
+            "type": "double",
+            "index": true
+        }
+      }
+    }
+  }
+}

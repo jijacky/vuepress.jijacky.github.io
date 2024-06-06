@@ -1,0 +1,88 @@
+cheatsheet 热键速查器
+
+## 找调试信息
+搜索文件中是否有符合下面条件的内容，主要用于查找调试信息
+\s+dd\s*\(
+^\s+dd\s*\(
+\s+dump\s*\(
+^\s+dump\s*\(
+\s+var_dump\s*\(
+^\s+var_dump\s*\(
+\s+(var_dump|dump|dd)\s*\(
+^\s+(var_dump|dump|dd)\s*\(
+^\s*(var_dump|dump|dd)\s*\(
+^\s+(echo).*;
+
+搜索排除：resources\*,storage\*,vendor\*
+
+## Cygwin
+Cygwin是一个在windows平台上运行的类UNIX模拟环境
+
+## 公司糟粕
+提前上班开晨会
+晚上下班开会
+签署所谓奋斗者协议
+签合同不给副本
+发工资没有明细工资条
+单休
+酒文化
+职务之外
+
+## 有类似花生壳的开源软件吗
+Ngrok
+免费，但会被墙。
+Tunnel
+昨晚测试，访问不了。
+localtunnel
+可用
+pagekite
+可用
+新花生壳
+开通内网映射，映射主机即可。目前免费版也要收取8块钱的费用就是了。
+NAT123
+功能同花生壳，但似乎是免费的。
+
+==================================
+laravel的rewrite方法
+if (!-e $request_filename) {
+    rewrite  ^(.*)$  /index.php?s=$1  last;
+}
+
+location / {
+	try_files $uri $uri/ /index.php?$query_string;
+}
+
+=============
+?? isset合并运算符 包括（false、00、0、'0'、''） 返回true
+?: empty合并运算符 只有（false、00、0、'0'、''、null） 返回true
+
+PHP 7添加了新的运算符双问号（??）运算符。在PHP 7中，双问号（??）运算符称为Null合并运算符。
+
+如果它存在且不为NULL，则返回其第一个操作数；否则返回第一个操作数。否则，返回其第二个操作数。从左到右评估。Null合并运算符也可以链形式使用。
+
+例如：$a = null; var_dump($a??1);输出1
+
+　　如果$a = 0; var_dump($a??1);输出0
+
+　　如果是空字符串，输出也是空字符串
+
+?:
+
+如果第一个操作数为空字符串，0，null,false等，则输出的是第二个操作数，否则返回第一个操作数；
+
+==========
+$a ?? 0 等同于 isset($a) ? $a : 0。
+$a ?: 0 等同于 $a ? $a : 0。
+empty: 判断一个变量是否为空(null、false、00、0、’0′这类，都会返回true)。
+isset: 判断一个变量是否设置(值为false、00、0、’0′这类，也会返回true)。
+=========
+https://blog.csdn.net/bai_xiaobai/article/details/95338346
+简写三元运算符，即evlis运算符（?:）和null合并运算符（??）
+?: 5.3+
+$a必须已经有过声明，否则代码会报错。
+?? 7.0+
+null合并运算符要求结果必须存在，并且不为null，即使为false，条件依然成立。
+
+=========
+在cmd下，后面的汉字经常乱码，记录一下
+Redis::ping(): send of 14 bytes failed with errno=10054 远程主机强迫关闭了一个现有的连接。

@@ -1,0 +1,15 @@
+nginx 配置
+stream {
+    server {
+        listen 8282;
+        proxy_pass workerman;
+    }
+
+    upstream workerman {
+        server 127.0.0.1:8283 weight=1;
+        server 127.0.0.1:8284 weight=10;
+    }
+}
+
+如图片所示，启用两个GatewayWorker实例即可，但是注意实例名称不能相同
+https://learnku.com/laravel/t/47001

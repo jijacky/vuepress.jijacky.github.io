@@ -1,0 +1,28 @@
+docker 安装镜像出错，解决汇总
+
+国内镜像
+vim /etc/docker/daemon.json
+{
+"registry-mirrors": [
+"http://hub-mirror.c.163.com",
+"https://registry.docker-cn.com",
+"https://nrbewqda.mirror.aliyuncs.com",
+"https://dmmxhzvq.mirror.aliyuncs.com",
+"https://jxus37ad.mirror.aliyuncs.com"
+]
+}
+重启docker
+systemctl daemon-reload
+systemctl restart docker
+service docker restart
+
+修改源
+sudo echo "DOCKER_OPTS=\"--registry-mirror=http://hub-mirror.c.163.com\"" >> /etc/default/docker
+启动镜像
+docker run -p 5000:5000 elastichq/elasticsearch-hq
+将当前用户加入docker组
+sudo usermod -aG docker $USER
+
+error: dial tcp:lookup 
+/etc/resolv.conf
+添加：nameserver 8.8.8.8
