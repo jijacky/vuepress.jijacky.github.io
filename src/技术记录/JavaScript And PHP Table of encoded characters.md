@@ -23,7 +23,7 @@ Here you can see how the various JavaScript and PHP functions apply to a range o
 | Input   | JavaScript |           |                    |    PHP    |              |              |
 | :------ | :--------: | :-------: | :----------------: | :-------: | :----------: | :----------: |
 |         |   escape   | encodeURI | encodeURIComponent | urlencode | rawurlencode | htmlentities |
-| <space> |  %20   |  %20  |   %20    |   +   |   %20   |       |
+| `<space>` |  %20   |  %20  |   %20    |   +   |   %20   |       |
 | !       |    %21     |     !     |         !          |    %21    |     %21      |      !       |
 | @       |     @      |     @     |        %40         |    %40    |     %40      |      @       |
 | #       |    %23     |     #     |        %23         |    %23    |     %23      |      #       |

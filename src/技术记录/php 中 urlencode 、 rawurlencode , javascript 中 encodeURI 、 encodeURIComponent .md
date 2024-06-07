@@ -24,7 +24,7 @@ date: 2024-05-31
 
 ## PHP 中的 urlencode 和 urldecode 
 
-urlencode 是最传统的 url 编码函数。特别是在 <form> 的数据传输中，php 在接收表单时，就是以 urlencode 的结果形式进行接收的，如果 <form> 的提交形式是 get ，你就可以在结果地址中看到。但是在 php 中使用 $_GET 、 $_POST 进行接收时，结果却是已经 urldecode 了的。官方文档的解释是：此编码与 WWW 表单 POST 数据的编码方式是一样的，同时与 *application/x-www-form-urlencoded* 的媒体类型编码方式一样。
+urlencode 是最传统的 url 编码函数。特别是在 `<form>` 的数据传输中，php 在接收表单时，就是以 urlencode 的结果形式进行接收的，如果 `<form>` 的提交形式是 get ，你就可以在结果地址中看到。但是在 php 中使用 $_GET 、 $_POST 进行接收时，结果却是已经 urldecode 了的。官方文档的解释是：此编码与 WWW 表单 POST 数据的编码方式是一样的，同时与 *application/x-www-form-urlencoded* 的媒体类型编码方式一样。
 
 urlencode 在编码中文和一些字符时，就是将其转换为对应的十六进制编码。
 

@@ -389,7 +389,7 @@ $ curl -X PUT 'localhost:9200/accounts' -d '
 }
 ```
 
-> 设置高亮标签，取代<em>
+> 设置高亮标签，取代`<em>`
 
 ```json
 {
