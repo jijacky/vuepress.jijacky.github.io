@@ -4,7 +4,7 @@ layout: BlogHome
 icon: home
 title: 主页
 bgImage: /logo.jpg
-#heroImage: /logo.png
+heroImage: /logo.png
 heroText: Veeooo
 heroFullScreen: true
 tagline: 你所要守护的才是你的正义
